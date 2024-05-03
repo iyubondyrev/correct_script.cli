@@ -1,0 +1,38 @@
+name: Build and Upload JAR on Release
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: openjdk:17-slim
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          repository: 'iyubondyrev/correct_script.cli'
+          path: 'correct_script.cli'
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Build Sever Jar
+        run: ./gradlew BuildCliJar
+        working-directory: ./correct_script.cli
+
+
+      - name: Upload JAR to Release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ./correct_script.cli/build/libs/cli.jar
+          asset_name: correct_script.cli.jar
+          asset_content_type: application/java-archive
