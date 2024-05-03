@@ -1,0 +1,77 @@
+2024-05-03 20:31:46.662 [main] DEBUG requestResponseLogger - FixScriptRequest(script=a = [1, 2, 3, "lol"]
+for i in a:
+    e = int(i)
+, error=Traceback (most recent call last):
+  File "/data/output.py", line 3, in <module>
+    e = int(i)
+        ^^^^^^
+ValueError: invalid literal for int() with base 10: 'lol'
+)
+2024-05-03 20:32:28.994 [main] DEBUG requestResponseLogger - HttpResponse[http://45.87.80.234:8080/fix-script, 200 OK]
+2024-05-03 20:32:29.009 [main] DEBUG requestResponseLogger - FixScriptResponse(fixedScript=a = [1, 2, 3, 'lol']
+for i in a:
+    if i.isdigit():
+        e = int(i)
+    else:
+        print(i, 'is not a digit')
+)
+2024-05-03 20:32:29.119 [main] DEBUG requestResponseLogger - FixScriptRequest(script=a = [1, 2, 3, 'lol']
+for i in a:
+    if i.isdigit():
+        e = int(i)
+    else:
+        print(i, 'is not a digit')
+, error=Traceback (most recent call last):
+  File "/data/output.py", line 3, in <module>
+    e = int(i)
+        ^^^^^^
+ValueError: invalid literal for int() with base 10: 'lol'
+)
+2024-05-03 20:33:09.643 [main] DEBUG requestResponseLogger - HttpResponse[http://45.87.80.234:8080/fix-script, 200 OK]
+2024-05-03 20:33:09.646 [main] DEBUG requestResponseLogger - FixScriptResponse(fixedScript=a = [1, 2, 3, 'lol']
+for i in a:
+    if i.isdigit():
+        e = int(i)
+    else:
+        print(i, 'is not a digit')
+)
+2024-05-03 20:33:09.803 [main] DEBUG requestResponseLogger - FixScriptRequest(script=a = [1, 2, 3, 'lol']
+for i in a:
+    if i.isdigit():
+        e = int(i)
+    else:
+        print(i, 'is not a digit')
+, error=Traceback (most recent call last):
+  File "/data/output.py", line 3, in <module>
+    if i.isdigit():
+       ^^^^^^^^^
+AttributeError: 'int' object has no attribute 'isdigit'
+)
+2024-05-03 20:33:48.846 [main] DEBUG requestResponseLogger - HttpResponse[http://45.87.80.234:8080/fix-script, 200 OK]
+2024-05-03 20:33:48.850 [main] DEBUG requestResponseLogger - FixScriptResponse(fixedScript=a = [1, 2, 3, 'lol']
+for i in a:
+    if isinstance(i, int) and i.isdigit():
+        e = int(i)
+    else:
+        print(i, 'is not a digit')
+)
+2024-05-03 20:33:49.090 [main] DEBUG requestResponseLogger - FixScriptRequest(script=a = [1, 2, 3, 'lol']
+for i in a:
+    if isinstance(i, int) and i.isdigit():
+        e = int(i)
+    else:
+        print(i, 'is not a digit')
+, error=Traceback (most recent call last):
+  File "/data/output.py", line 3, in <module>
+    if i.isdigit():
+       ^^^^^^^^^
+AttributeError: 'int' object has no attribute 'isdigit'
+)
+2024-05-03 20:34:33.391 [main] DEBUG requestResponseLogger - HttpResponse[http://45.87.80.234:8080/fix-script, 200 OK]
+2024-05-03 20:34:33.395 [main] DEBUG requestResponseLogger - FixScriptResponse(fixedScript=a = [1, 2, 3, 'lol']
+for i in a:
+    if isinstance(i, int) and str(i).isdigit():
+        e = int(i)
+    else:
+        print(i, 'is not a digit')
+)
