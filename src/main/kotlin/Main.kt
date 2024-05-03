@@ -18,7 +18,7 @@ fun main(args: Array<String>) {
     val timeout by parser.option(ArgType.Int, shortName = "t", fullName = "timeout",
         description = "How long to wait the server to respond in seconds")
         .default(60)
-    val logRequests by parser.option(ArgType.Boolean, shortName = "lr", fullName = "log_requests", description = "If true request history will be stored in the file correct_script.log").default(true)
+    val logRequests by parser.option(ArgType.Boolean, shortName = "lr", fullName = "log_requests", description = "If true request history will be stored in the file correct_script.log").default(false)
 
     parser.parse(args)
 

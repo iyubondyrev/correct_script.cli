@@ -27,7 +27,7 @@ else
 fi
 
 echo "Adding alias to the shell profile..."
-echo "alias correct_script='java -jar $INSTALL_DIR/correct_script.cli.jar'" >> $PROFILE
+echo "alias correct_script='java -jar $INSTALL_DIR/correct_script.cli.jar 2> /dev/null'" >> $PROFILE
 
 echo "Installation completed. Please run 'source $PROFILE' to reload your shell or restart your terminal."
 
