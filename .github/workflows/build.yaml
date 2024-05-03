@@ -7,8 +7,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: openjdk:17-slim
 
     steps:
       - uses: actions/checkout@v2
@@ -22,10 +20,15 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Build Sever Jar
+      - name: Setup Docker
+        run: |
+          sudo service docker start
+          sudo usermod -aG docker $USER
+          newgrp docker
+
+      - name: Build Server Jar
         run: ./gradlew BuildCliJar
         working-directory: ./correct_script.cli
-
 
       - name: Upload JAR to Release
         uses: actions/upload-release-asset@v1
