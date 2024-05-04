@@ -76,6 +76,7 @@ class ScriptCorrector(
                 val errorStream = process.errorStream.bufferedReader().use { it.readText() }
                 throw RuntimeException(errorStream)
             }
+            communicationLogger.info("Docker container stopped")
         }
     }
 
