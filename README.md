@@ -18,6 +18,8 @@ To install CorrectScript CLI, run the following command in your terminal:
 curl -s https://raw.githubusercontent.com/iyubondyrev/correct_script.cli/main/install.sh | bash
 ```
 
+Ensure Java is installed on your machine to utilize this CLI tool effectively. It is tested and optimized for OpenJDK version 17.0.8.1.
+
 This script will download the latest version of `correct_script.cli.jar` from the GitHub releases, place it into `/opt/correct_script.cli/`, and set up an alias `correct_script` for easy execution from the terminal. After the installation you will have to restart your terminal or do (you will get instructions from the installation script)
 ```bash
 source .zshrc/.bashrc
