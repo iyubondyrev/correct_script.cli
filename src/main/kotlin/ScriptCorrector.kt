@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory
 import ch.qos.logback.classic.Level
 import ch.qos.logback.classic.Logger
 import java.io.File
+import kotlin.jvm.Throws
 
 data class FixScriptRequest(val script: String, val error: String)
 data class FixScriptResponse(val fixedScript: String)
@@ -55,16 +56,26 @@ class ScriptCorrector(
         val command = "docker run -d -v $outputPath:/data/${outputFile.name} --entrypoint tail $dockerImage -f /dev/null"
         communicationLogger.info("Starting docker container for image $dockerImage")
         Runtime.getRuntime().exec(command).let { process ->
-            process.waitFor()
+            val exitCode = process.waitFor()
+            if (exitCode != 0) {
+                val errorStream = process.errorStream.bufferedReader().use { it.readText() }
+                throw RuntimeException(errorStream)
+            }
             dockerContainerId = process.inputStream.bufferedReader().readText().trim()
             communicationLogger.info("Docker container started")
         }
+
     }
 
     private fun stopDockerContainer() {
         if (dockerContainerId != null) {
-            Runtime.getRuntime().exec("docker stop $dockerContainerId")
-            communicationLogger.info("Docker container stopped")
+            val command = "docker stop $dockerContainerId"
+            val process = Runtime.getRuntime().exec(command)
+            val exitCode = process.waitFor()
+            if (exitCode != 0) {
+                val errorStream = process.errorStream.bufferedReader().use { it.readText() }
+                throw RuntimeException(errorStream)
+            }
         }
     }
 

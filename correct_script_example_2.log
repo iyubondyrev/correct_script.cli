@@ -1,0 +1,26 @@
+2024-05-04 12:58:44.932 [main] DEBUG requestResponseLogger - FixScriptRequest(script=for i in range(1, 10)
+    print(1 / (7 - i))
+
+, error=  File "/data/fixed.py", line 1
+    for i in range(1, 10)
+                         ^
+SyntaxError: expected ':'
+)
+2024-05-04 12:59:17.955 [main] DEBUG requestResponseLogger - HttpResponse[http://45.87.80.234:8080/fix-script, 200 OK]
+2024-05-04 12:59:17.969 [main] DEBUG requestResponseLogger - FixScriptResponse(fixedScript=for i in range(1, 10):
+    print(1 / (7 - i))
+)
+2024-05-04 12:59:18.069 [main] DEBUG requestResponseLogger - FixScriptRequest(script=for i in range(1, 10):
+    print(1 / (7 - i))
+, error=Traceback (most recent call last):
+  File "/data/fixed.py", line 2, in <module>
+    print(1 / (7 - i))
+          ~~^~~~~~~~~
+ZeroDivisionError: division by zero
+)
+2024-05-04 12:59:51.427 [main] DEBUG requestResponseLogger - HttpResponse[http://45.87.80.234:8080/fix-script, 200 OK]
+2024-05-04 12:59:51.428 [main] DEBUG requestResponseLogger - FixScriptResponse(fixedScript=for i in range(1, 10):
+    if i == 7:
+        continue
+    print(1 / (7 - i))
+)

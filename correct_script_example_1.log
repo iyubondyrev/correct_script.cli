@@ -1,0 +1,17 @@
+2024-05-04 12:52:38.587 [main] DEBUG requestResponseLogger - FixScriptRequest(script=a = [1, 2, 3, "lol"]
+for i in a:
+    e = int(i)
+, error=Traceback (most recent call last):
+  File "/data/fixed.py", line 3, in <module>
+    e = int(i)
+        ^^^^^^
+ValueError: invalid literal for int() with base 10: 'lol'
+)
+2024-05-04 12:53:19.716 [main] DEBUG requestResponseLogger - HttpResponse[http://45.87.80.234:8080/fix-script, 200 OK]
+2024-05-04 12:53:19.734 [main] DEBUG requestResponseLogger - FixScriptResponse(fixedScript=a = [1, 2, 3, 'lol']
+for i in a:
+    try:
+        e = int(i)
+    except ValueError:
+        print(f'Cannot convert {i} to int')
+)
