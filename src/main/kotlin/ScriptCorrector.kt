@@ -135,9 +135,7 @@ class ScriptCorrector(
 
             if (errors.isNotEmpty()) {
                 hasErrors = true
-
-                retries++
-                communicationLogger.info("Found errors, trying to fix, $retries retry of $maxRetries retries.")
+                communicationLogger.info("Found errors, trying to fix, ${retries + 1} retry of $maxRetries retries.")
 
 
                 val scriptText = outputFile.readText()
@@ -162,11 +160,12 @@ class ScriptCorrector(
 
                 outputFile.writeText(responseData.fixedScript)
                 communicationLogger.info("Updated script saved.")
+                retries++
             } else {
                 communicationLogger.info("No errors found in script.")
                 hasErrors = false
             }
-        } while (hasErrors && retries <= maxRetries)
+        } while (hasErrors && retries < maxRetries)
 
         if (hasErrors) {
             communicationLogger.info("Sorry, I didn't manage to fix you script :(")
