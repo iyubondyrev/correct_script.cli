@@ -58,7 +58,7 @@ correct_script -i <input_file.py> -o <output_file.py>
 - `-di, --docker_image`: Specifies a Docker image to use for running the script. NB: you need to have docker installed and running to use this feature.
 - `-r, --max_retires` (default: `5`): Specifies the maximum number of retries for fixing the script.
 - `-pi, --python_interpreter` (default: `python3`): Specifies the Python interpreter to use.
-- `-t, --timeout` (default: `60`): Specifies the timeout in seconds for server responses. NB: LLMs can be quite slow so 40+ seconds is recommended.
+- `-t, --timeout` (default: `60`): Specifies the timeout in seconds for server responses. NB: LLMs can be quite slow so 60+ seconds is recommended.
 - `-lr, --log_requests` (default: `false`): Enables logging of the request and response data.
 
 ## About the default server
